@@ -351,6 +351,7 @@ class Transformer(nn.Module):
         print("Reading features file from {}...".format(features_file))
         with io.open(features_file, "r", encoding="utf-8") as read_file:
             inputs = [l.strip() for l in read_file.readlines()]
+            print(inputs)
         
         print("Performing inference ...")
         # Append each translated sentence line by line
