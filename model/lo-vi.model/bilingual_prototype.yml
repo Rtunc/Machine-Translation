@@ -1,7 +1,7 @@
 # data location and config section
 data:
-  train_data_location: laos-vn/Train/train2023
-  eval_data_location:  laos-vn/Dev/dev2023
+  train_data_location: data/ALT/train.bpe
+  eval_data_location:  data/ALT/test.bpe
   src_lang: .lo
   trg_lang: .vi
 log_file_models: 'model.log'
@@ -11,9 +11,9 @@ build_vocab_kwargs: # additional arguments for build_vocab. See torchtext.vocab.
   min_freq: 5
 # model parameters section
 device: cuda
-d_model: 1024
+d_model: 512
 n_layers: 6
-heads: 16
+heads: 8
 # inference section
 eval_batch_size: 8
 decode_strategy: BeamSearch
@@ -36,7 +36,7 @@ optimizer_params:
   eps: !!float 1e-9
 n_warmup_steps: 4000
 label_smoothing: 0.1
-dropout: 0.3
+dropout: 0.1
 # training config, evaluation, save & load section
 batch_size: 64
 epochs: 20
