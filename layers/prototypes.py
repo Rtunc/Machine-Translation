@@ -134,7 +134,7 @@ class Norm(nn.Module):
 
 class FeedForward(nn.Module):
     """A two-hidden-linear feedforward layer that can activate and dropout its transition state"""
-    def __init__(self, d_model, d_ff=2048, internal_activation=functional.relu, dropout=0.1):
+    def __init__(self, d_model, d_ff=4096, internal_activation=functional.relu, dropout=0.1):
         super().__init__() 
         self.linear_1 = nn.Linear(d_model, d_ff)
         self.dropout = nn.Dropout(dropout)
