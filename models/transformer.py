@@ -67,7 +67,7 @@ class Transformer(nn.Module):
         infer_max_length = self.config.get('max_length', const.DEFAULT_MAX_LENGTH)
         encoder_max_length = max(input_max_length, train_ignore_length)
         decoder_max_length = max(infer_max_length, train_ignore_length)
-        self.encoder = Encoder(src_vocab_size, d_model, N, heads, dropout, max_seq_length=encoder_max_length)
+        self.encoder = Encoder(src_vocab_size, d_model, N*2, heads, dropout, max_seq_length=encoder_max_length)
         self.decoder = Decoder(trg_vocab_size, d_model, N, heads, dropout, max_seq_length=decoder_max_length)
         self.out = nn.Linear(d_model, trg_vocab_size)
 
