@@ -106,6 +106,7 @@ class MultiHeadAttention(nn.Module):
         
         if mask is not None:
             mask = mask.unsqueeze(1) # add a dimension to account for head
+            print(f"scores shape: {scores.shape}, mask shape: {mask.shape}")
             scores = scores.masked_fill(mask==0, -1e9)
         # softmax the padding/peeking masked attention
         scores = functional.softmax(scores, dim=-1)
