@@ -34,7 +34,7 @@ class PositionalEncoder(nn.Module):
         if(x.shape[1] > self._max_seq_length):
             print(x.shape)
             logging.warn("Input longer than maximum supported length for PE detected. Build a model with a larger input_max_length limit if you want to keep the input; or ignore if you want the input trimmed")
-            x = x[:, :self._max_seq_length]
+            x = x[:, :self._max_seq_length,:]
         
         x = x * math.sqrt(self.d_model)
         
