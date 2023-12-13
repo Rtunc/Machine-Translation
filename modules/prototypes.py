@@ -25,7 +25,7 @@ class EncoderLayer(nn.Module):
         super().__init__()
         self.norm_1 = layers.Norm(d_model)
         self.norm_2 = layers.Norm(d_model)
-        self.attn = nn.MultiheadAttention(heads, d_model, dropout=dropout)
+        self.attn = layers.MultiHeadAttention(heads, d_model, dropout=dropout)
         self.ff = layers.FeedForward(d_model, dropout=dropout)
         self.dropout_1 = nn.Dropout(dropout)
         self.dropout_2 = nn.Dropout(dropout)
@@ -64,8 +64,8 @@ class DecoderLayer(nn.Module):
         self.dropout_2 = nn.Dropout(dropout)
         self.dropout_3 = nn.Dropout(dropout)
 
-        self.attn_1 = nn.MultiheadAttention(heads, d_model, dropout=dropout)
-        self.attn_2 = nn.MultiheadAttention(heads, d_model, dropout=dropout)
+        self.attn_1 = layers.MultiHeadAttention(heads, d_model, dropout=dropout)
+        self.attn_2 = layers.MultiHeadAttention(heads, d_model, dropout=dropout)
         self.ff = layers.FeedForward(d_model, dropout=dropout)
 
     def forward(self, x, memory, src_mask, trg_mask):
